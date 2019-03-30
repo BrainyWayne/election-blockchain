@@ -10,7 +10,7 @@ contract Election {
 
     //Associative array for ccounts that have voted
     mapping (uint => bool) public voters;
-    
+
     //Associative array for candidates
     mapping(uint => Candidate) public candidates;
 
@@ -28,6 +28,11 @@ contract Election {
         candidates[candidateCount] = Candidate(candidateCount, _name, 0);
     }
 
+    //Trigger event when vote is casted
+    event votedEvent (
+        uint indexed _candidateId
+    );
+
     //Vote Casting
     function vote(uint _candidateId) public {
         //Check if voter hasn't aleady voted
@@ -39,5 +44,8 @@ contract Election {
         voters[uint256(msg.sender)] = true;
 
         candidates[_candidateId].voteCount++;
+
+        // trigger voted event
+        emit votedEvent(_candidateId);
     }
 }
