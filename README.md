@@ -10,3 +10,7 @@ Solidity
 
 Framework
 Truffle
+
+#Special Thanks
+Dapp University. I got the inspiration and knowledge from dappuniversity
+to make this project possible.Website: www.dappuniversity.com
